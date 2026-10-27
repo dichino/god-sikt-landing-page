@@ -1,0 +1,191 @@
+[
+  {
+    "id": 0,
+    "category": "varselskilt",
+    "name": "Annen fare",
+    "description": "Angir en fare som det ikke finnes eget skilt for. Farens art skal angis på underskilt.",
+    "image": "/assets/signs/annen_fare.webp"
+  },
+  {
+    "id": 1,
+    "category": "varselskilt",
+    "name": "Annen fare med gul bunn",
+    "description": "Gul fluoriserende bunn kan benyttes når et skilt brukes i forbindelse med arbeid, eller andre midlertidige tiltak i sjø.",
+    "image": "/assets/signs/annen_fare_gul.webp"
+  },
+  {
+    "id": 2,
+    "category": "varselskilt",
+    "name": "Horisontal klaring",
+    "description": "Angir horisontal klaring i en farledsinnsnevring, utdypet renne eller lignende.",
+    "image": "/assets/signs/horisontal_klaring.webp"
+  },
+  {
+    "id": 3,
+    "category": "varselskilt",
+    "name": "Vertikal klaring og sikker vertikal klaring",
+    "description": "Angir vertikal klaring under bru eller lignende, og sikker vertikal klaring under luftlinje med elektrisk energi eller elektronisk kommunikasjon.\nVed lave bruer kan skiltet «Annen fare» med underskilt «Lav bru» anvendes.",
+    "image": "/assets/signs/vertikal_klaring.webp"
+  },
+  {
+    "id": 4,
+    "category": "varselskilt",
+    "name": "Bevegelig bru",
+    "description": "Angir alle typer bevegelig bru, for eksempel klaffebru og svingbru.",
+    "image": "/assets/signs/bevegelig_bru.webp"
+  },
+  {
+    "id": 5,
+    "category": "varselskilt",
+    "name": "Kabelferge",
+    "description": "Angir kabelstyrt eller kabeldrevet ferge.",
+    "image": "/assets/signs/kabelferge.webp"
+  },
+  {
+    "id": 6,
+    "category": "varselskilt",
+    "name": "Livsfarlig ledning",
+    "description": "Angir strømførende ledning med livsfarlig spenning.",
+    "image": "/assets/signs/livsfarlig_ledning.webp"
+  },
+  {
+    "id": 7,
+    "category": "forbudsskilt",
+    "name": "Ankring forbudt",
+    "description": "Angir at ankring er forbudt.",
+    "image": "/assets/signs/ankring_forbudt.webp"
+  },
+  {
+    "id": 8,
+    "category": "forbudsskilt",
+    "name": "Dykking forbudt",
+    "description": "Angir at dykking er forbudt. Forbud kan være gitt ved ordensforskrift eller lignende.",
+    "image": "/assets/signs/dykking_forbudt.webp"
+  },
+  {
+    "id": 9,
+    "category": "forbudsskilt",
+    "name": "Fartsgrense",
+    "description": "Angir høyeste tillatte fart (for eksempel 5 knop).",
+    "image": "/assets/signs/fartsgrense.webp"
+  },
+  {
+    "id": 10,
+    "category": "forbudsskilt",
+    "name": "Fartsgrense opphører",
+    "description": "Angir at fartsgrense opphører.",
+    "image": "/assets/signs/fartsgrense_opphorer.webp"
+  },
+  {
+    "id": 11,
+    "category": "forbudsskilt",
+    "name": "Sjøtrafikk forbudt",
+    "description": "Angir at sjøtrafikk er forbudt innenfor et sjøområde.",
+    "image": "/assets/signs/sjotrafikk_forbudt.webp"
+  },
+  {
+    "id": 12,
+    "category": "opplysningsskilt",
+    "name": "Anropskanal VHF",
+    "description": "Angir anropskanal som skal brukes for å kontakte havn eller lignende.",
+    "image": "/assets/signs/anropskanal.webp"
+  },
+  {
+    "id": 13,
+    "category": "opplysningsskilt",
+    "name": "Sakte fart",
+    "description": "Angir at fartøyer skal utvise forsiktighet og avpasse farten.",
+    "image": "/assets/signs/sakte_fart.webp"
+  },
+  {
+    "id": 14,
+    "category": "underskilt",
+    "name": "Dato",
+    "description": "Angir dato for når hovedskiltet gjelder.",
+    "image": "/assets/signs/dato.webp"
+  },
+  {
+    "id": 15,
+    "category": "underskilt",
+    "name": "Kabel, Rørledning, vannledning eller avløpsledning",
+    "description": "Angir at hovedskiltet gjelder kabel, rørledning eller lignende sjøledning.",
+    "image": "/assets/signs/kabel.webp"
+  },
+  {
+    "id": 16,
+    "category": "underskilt",
+    "name": "Lav bru",
+    "description": "Angir at hovedskiltet gjelder lav bru.",
+    "image": "/assets/signs/lav_bru.webp"
+  },
+  {
+    "id": 17,
+    "category": "underskilt",
+    "name": "Strekningens lengde bortenfor skiltet i meter",
+    "description": "Angir en strekning som begynner bortenfor hovedskiltet i meter (m).",
+    "image": "/assets/signs/lengde_bortenfor_meter.webp"
+  },
+  {
+    "id": 18,
+    "category": "underskilt",
+    "name": "Strekningens lengde bortenfor skiltet i nautiske mil",
+    "description": "Angir en strekning som begynner bortenfor hovedskiltet i nautiske mil (M).",
+    "image": "/assets/signs/lengde_bortenfor_nautiske_mil.webp"
+  },
+  {
+    "id": 19,
+    "category": "underskilt",
+    "name": "Strekningens lengde fra skiltet i meter",
+    "description": "Angir strekning fra hovedskiltet i meter (m).",
+    "image": "/assets/signs/lengde_fra_skiltet_meter.webp"
+  },
+  {
+    "id": 20,
+    "category": "underskilt",
+    "name": "Angir strekning fra skiltet i nautiske mil",
+    "description": "Angir strekning fra skiltet i nautiske mil (M).",
+    "image": "/assets/signs/angir_strekning_nautiske.webp"
+  },
+  {
+    "id": 21,
+    "category": "underskilt",
+    "name": "Tid",
+    "description": "Angir tiden for når hovedskiltet gjelder.",
+    "image": "/assets/signs/tid.webp"
+  },
+  {
+    "id": 22,
+    "category": "underskilt",
+    "name": "Virkeområde",
+    "description": "Angir hovedskiltets virkeområde en eller begge sider i meter (m).",
+    "image": "/assets/signs/virkeomrade.webp"
+  },
+  {
+    "id": 23,
+    "category": "markeringsskilt",
+    "name": "Beste punkt for passering",
+    "description": "Angir beste punkt for passering under bru.",
+    "image": "/assets/signs/beste_punkt_for_passasje.webp"
+  },
+  {
+    "id": 24,
+    "category": "markeringsskilt",
+    "name": "Overett",
+    "description": "Viser traseen på sjøbunnen for ledninger og kabler.",
+    "image": "/assets/signs/overett.webp"
+  },
+  {
+    "id": 25,
+    "category": "markeringsskilt",
+    "name": "Sidemarkering babord",
+    "description": "Angir sidemarkering til babord i forhold til merkesystemets hovedretning for begrenset høyde under bru.",
+    "image": "/assets/signs/sidemarkering_babord.webp"
+  },
+  {
+    "id": 26,
+    "category": "markeringsskilt",
+    "name": "Sidemarkering styrbord",
+    "description": "Angir sidemarkering til styrbord i forhold til merkesystemets hovedretning for begrenset høyde under bru.",
+    "image": "/assets/signs/sidemarkering_styrbord.webp"
+  }
+]

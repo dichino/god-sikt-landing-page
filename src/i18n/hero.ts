@@ -1,0 +1,28 @@
+export const heroCopy = {
+  nb: {
+    university: 'UNIVERSITETET I OSLO',
+    title: 'Bedre oversikt.', titleAccent: 'Ute på sjøen.',
+    description: 'God Sikt er en Android-app som samler kart, lokale værvarsler og maritim kunnskap. Ett sted å utforske forholdene rundt deg.',
+    explore: 'Utforsk appen', how: 'Slik fungerer den',
+    screenshotAlt: 'Den originale God Sikt-appen viser et sjøkart med navigasjonen Kart, Skilt og Om.',
+    example: 'EKSEMPEL', original: 'ORIGINAL ANDROID-APP · SOS VAR KUN ET KONSEPT',
+    built: 'ET PROSJEKT I PROGRAMVAREUTVIKLING, BYGGET FRA BUNNEN AV.', discover: 'Bli kjent med prosjektet',
+    overviewLabel: 'IDEEN', overviewTitle: 'Mindre leting.', overviewAccent: 'Mer innsikt.',
+    overviewBody: 'På sjøen er det nyttig å se informasjon i sammenheng. God Sikt ble utviklet for å gi fritidsbåtførere i Norge en samlet oversikt over lokale forhold — med kartet som utgangspunkt.',
+    overviewContext: 'Appen ble laget i samarbeid ved Universitetet i Oslo. Prosjektet kobler praktisk Android-utvikling med et konkret behov for stedsbasert informasjon.',
+    pillars: ['Interaktive kart', 'Lokale værvarsler', 'Maritime skilt'],
+  },
+  en: {
+    university: 'UNIVERSITY OF OSLO',
+    title: 'A clearer view.', titleAccent: 'Out on the water.',
+    description: 'Meet God Sikt. An Android application that brings maps, local weather, and maritime knowledge into one considered experience.',
+    explore: 'Explore the app', how: 'How it works',
+    screenshotAlt: 'The original God Sikt Android app displaying a nautical chart and its Kart, Skilt, and Om navigation.',
+    example: 'EXAMPLE', original: 'ORIGINAL ANDROID UI · SOS CONCEPT ONLY',
+    built: 'A SOFTWARE ENGINEERING PROJECT, BUILT FROM THE GROUND UP.', discover: 'Discover the project',
+    overviewLabel: 'THE IDEA', overviewTitle: 'Less searching.', overviewAccent: 'More understanding.',
+    overviewBody: 'Out on the water, context matters. God Sikt was built to help recreational boaters in Norway explore the conditions around them — with the map as a common starting point.',
+    overviewContext: 'Developed collaboratively at the University of Oslo, the project connects real Android engineering with a practical, location-based experience.',
+    pillars: ['Interactive maps', 'Local weather', 'Maritime signs'],
+  },
+};
