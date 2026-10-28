@@ -1,3 +1,4 @@
+import { assetUrl } from '../lib/urls';
 import { useEffect, useRef, useState } from 'react';
 import type { KeyboardEvent, MouseEvent } from 'react';
 import { ArrowLeft, ArrowRight, ChevronRight, CloudSun, Compass, Droplets, Info, LocateFixed, Map, MapPin, Minus, Navigation, Plus, Radio, RotateCcw, Signal, Smartphone, Sun, Wind, X } from 'lucide-react';
@@ -60,7 +61,7 @@ function SignsView() {
   useEffect(() => { heading.current?.focus({ preventScroll: true }); }, [category, selected]);
   useEffect(() => {
     const controller = new AbortController();
-    fetch('/assets/signs.json', { signal: controller.signal }).then(response => { if (!response.ok) throw new Error('Unavailable'); return response.json(); }).then(setSigns).catch(error => { if (error.name !== 'AbortError') setError(true); });
+    fetch(assetUrl('/assets/signs.json'), { signal: controller.signal }).then(response => { if (!response.ok) throw new Error('Unavailable'); return response.json(); }).then(setSigns).catch(error => { if (error.name !== 'AbortError') setError(true); });
     return () => controller.abort();
   }, []);
   const categoryInfo = signCategories.find(c => c.id === category);
@@ -68,8 +69,8 @@ function SignsView() {
   return <div className="sign-view screen-enter" lang="nb">
     <div className="app-inner-heading">{category && <button className="icon-button" aria-label="Tilbake" onClick={goBack}><ArrowLeft size={19}/></button>}<h3 ref={heading} tabIndex={-1}>{selected ? 'Skiltforklaring' : categoryInfo?.label ?? 'Skilt og regler'}</h3></div>
     {!category && <><p className="app-subtitle">Skiltbiblioteket fra den originale appen.</p><div className="category-list">{signCategories.map(item => <button key={item.id} onClick={() => { setCategory(item.id); setSelected(null); }}><span className="category-symbol">{item.symbol}</span><span>{item.label}<small>{item.description}</small></span><ChevronRight size={16}/></button>)}</div><p className="library-note">27 skilt · 5 kategorier<br/>Originale illustrasjoner og beskrivelser fra appen.</p></>}
-    {category && !selected && <div className="sign-list">{error ? <p>Skiltbiblioteket kunne ikke lastes. Prøv å laste siden på nytt.</p> : signs.length === 0 ? <p>Laster skiltbiblioteket …</p> : signs.filter(sign => sign.category === category).map(sign => <button key={sign.id} onClick={() => { setSelected(sign); setFontSize(16); }}><img src={sign.image} alt="" width="48" height="48"/><span>{sign.name}</span><ChevronRight size={16}/></button>)}</div>}
-    {selected && <div className="sign-detail"><img src={selected.image} alt={selected.name} width="120" height="120"/><h4>{selected.name}</h4><p style={{ fontSize }}>{selected.description}</p><div className="font-controls"><span>Tekststørrelse</span><button className="icon-button" aria-label="Reduser tekststørrelse" disabled={fontSize <= 14} onClick={() => setFontSize(v => v - 2)}><Minus size={19}/></button><button className="icon-button" aria-label="Øk tekststørrelse" disabled={fontSize >= 24} onClick={() => setFontSize(v => v + 2)}><Plus size={19}/></button></div></div>}
+    {category && !selected && <div className="sign-list">{error ? <p>Skiltbiblioteket kunne ikke lastes. Prøv å laste siden på nytt.</p> : signs.length === 0 ? <p>Laster skiltbiblioteket …</p> : signs.filter(sign => sign.category === category).map(sign => <button key={sign.id} onClick={() => { setSelected(sign); setFontSize(16); }}><img src={assetUrl(sign.image)} alt="" width="48" height="48"/><span>{sign.name}</span><ChevronRight size={16}/></button>)}</div>}
+    {selected && <div className="sign-detail"><img src={assetUrl(selected.image)} alt={selected.name} width="120" height="120"/><h4>{selected.name}</h4><p style={{ fontSize }}>{selected.description}</p><div className="font-controls"><span>Tekststørrelse</span><button className="icon-button" aria-label="Reduser tekststørrelse" disabled={fontSize <= 14} onClick={() => setFontSize(v => v - 2)}><Minus size={19}/></button><button className="icon-button" aria-label="Øk tekststørrelse" disabled={fontSize >= 24} onClick={() => setFontSize(v => v + 2)}><Plus size={19}/></button></div></div>}
   </div>;
 }
 
@@ -82,7 +83,7 @@ const aboutPages = [
 
 function AboutView() {
   const [page, setPage] = useState<number | null>(null);
-  return <div className="about-view screen-enter"><div className="app-inner-heading">{page !== null && <button className="icon-button" aria-label="Tilbake til Om" onClick={() => setPage(null)}><ArrowLeft size={19}/></button>}<h3>{page === null ? 'Om God Sikt' : aboutPages[page].title}</h3></div>{page === null ? <><img className="about-logo" src="/assets/logo.png" alt="God Sikt" width="55" height="79"/><p className="app-subtitle">Bli kjent med God Sikt.</p><div className="about-list">{aboutPages.map((item, index) => <button key={item.title} onClick={() => setPage(index)}><span>{item.title}<small>{item.subtitle}</small></span><ChevronRight size={17}/></button>)}</div><p className="library-note">UNIVERSITETET I OSLO · VÅREN 2024</p></> : <div className="about-detail">{aboutPages[page].photo && <img src="/assets/team.webp" alt="Prosjektgruppen bak God Sikt samarbeider ved Universitetet i Oslo." width="900" height="675" loading="lazy"/>}<h4>{aboutPages[page].subtitle}</h4><p>{aboutPages[page].body}</p></div>}</div>;
+  return <div className="about-view screen-enter"><div className="app-inner-heading">{page !== null && <button className="icon-button" aria-label="Tilbake til Om" onClick={() => setPage(null)}><ArrowLeft size={19}/></button>}<h3>{page === null ? 'Om God Sikt' : aboutPages[page].title}</h3></div>{page === null ? <><img className="about-logo" src={assetUrl('/assets/logo.png')} alt="God Sikt" width="55" height="79"/><p className="app-subtitle">Bli kjent med God Sikt.</p><div className="about-list">{aboutPages.map((item, index) => <button key={item.title} onClick={() => setPage(index)}><span>{item.title}<small>{item.subtitle}</small></span><ChevronRight size={17}/></button>)}</div><p className="library-note">UNIVERSITETET I OSLO · VÅREN 2024</p></> : <div className="about-detail">{aboutPages[page].photo && <img src={assetUrl('/assets/team.webp')} alt="Prosjektgruppen bak God Sikt samarbeider ved Universitetet i Oslo." width="900" height="675" loading="lazy"/>}<h4>{aboutPages[page].subtitle}</h4><p>{aboutPages[page].body}</p></div>}</div>;
 }
 
 export default function AppDemo() {

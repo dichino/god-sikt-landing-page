@@ -1,3 +1,4 @@
+import { assetUrl } from '../lib/urls';
 import { ArrowDown, ArrowUpRight, Map, CloudSun, Compass, Wind, Droplets } from 'lucide-react';
 import { Chart, Phone } from './Shared';
 import { useLocale } from '../i18n/LocaleContext';
@@ -19,7 +20,7 @@ export default function Hero() {
       <div className="hero-visual">
         <div className="coordinate coordinate-top">59° 53′ 42″ N<br/>10° 44′ 13″ E</div>
         <div className="hero-orbit" aria-hidden="true"/><span className="chart-cross cross-one" aria-hidden="true">+</span><span className="chart-cross cross-two" aria-hidden="true">+</span>
-        <Phone className="hero-phone"><img className="authentic-screen" src="/assets/app-chart.webp" alt={copy.screenshotAlt} width="600" height="1300" fetchPriority="high"/></Phone>
+        <Phone className="hero-phone"><img className="authentic-screen" src={assetUrl('/assets/app-chart.webp')} alt={copy.screenshotAlt} width="600" height="1300" fetchPriority="high"/></Phone>
         <div className="floating-weather"><div className="floating-weather-top"><span><span className="status-dot"/> OSLOFJORDEN</span><span>{copy.example}</span></div><div className="floating-temperature"><span>18<sup>°</sup></span><CloudSun size={40} strokeWidth={1.2}/></div><div className="floating-metrics"><span><Wind size={15}/> {locale === 'nb' ? '2,1' : '2.1'} m/s</span><span><Droplets size={14}/> {locale === 'nb' ? '0,0' : '0.0'} mm</span></div></div>
         <div className="original-caption"><span/> {copy.original}</div>
       </div>

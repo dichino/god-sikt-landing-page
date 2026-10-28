@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { localeStorageKey, metadata, resolveLocale } from './locale';
 import type { Locale } from './locale';
+import { socialImageUrl } from '../lib/urls';
 
 type LocaleContextValue = { locale: Locale; setLocale: (locale: Locale) => void };
 const LocaleContext = createContext<LocaleContextValue | null>(null);
@@ -22,17 +23,16 @@ export function LocaleProvider({ children, initialLocale }: { children: ReactNod
     const copy = metadata[locale];
     document.documentElement.lang = locale;
     document.title = copy.title;
-    const origin = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href ?? window.location.origin;
     const values: Record<string, string> = {
       'meta[name="description"]': copy.description,
       'meta[property="og:title"]': copy.socialTitle,
       'meta[property="og:description"]': copy.socialDescription,
       'meta[property="og:locale"]': copy.openGraphLocale,
-      'meta[property="og:image"]': new URL(copy.image, origin).href,
+      'meta[property="og:image"]': socialImageUrl(copy.image),
       'meta[property="og:image:alt"]': copy.imageAlt,
       'meta[name="twitter:title"]': copy.socialTitle,
       'meta[name="twitter:description"]': copy.socialDescription,
-      'meta[name="twitter:image"]': new URL(copy.image, origin).href,
+      'meta[name="twitter:image"]': socialImageUrl(copy.image),
     };
     Object.entries(values).forEach(([selector, value]) => document.querySelector(selector)?.setAttribute('content', value));
   }, [locale]);

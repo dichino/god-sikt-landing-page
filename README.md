@@ -6,7 +6,7 @@ The website defaults to **Norwegian Bokmål**. The navigation’s **NO | EN** se
 
 ## Run locally
 
-Requires Node.js 20.19+ and npm.
+Requires Node.js 20.19+ and npm. GitHub Actions uses Node.js 22.
 
 ```sh
 npm ci
@@ -16,8 +16,11 @@ npm run dev
 ```sh
 npm test        # Demo boundaries and authentic asset integrity
 npm run build  # Strict TypeScript checks and production output
+npm run verify:pages # Check the built site and all resources under the Pages path
 npm run preview
 ```
+
+Open `http://127.0.0.1:5173/god-sikt-landing-page/` during development, or `http://127.0.0.1:4173/god-sikt-landing-page/` for the production preview.
 
 The production site is generated in `dist/`. No backend or environment variables are required.
 
@@ -46,21 +49,37 @@ The report and internal university documents were used privately to understand t
 src/components/  Page sections, shared presentation elements, interactive demo
 src/data/        Typed project content and deterministic demo data
 src/i18n/        Locale provider, localized copy, metadata, and preference handling
+src/lib/urls.ts  Base-aware public resource URLs and the production site URL
 src/styles.css   Responsive design system and reduced-motion rules
 public/assets/   Optimized supplied imagery and original sign library
-tests/          Demo boundary and public-asset integrity checks
+tests/           Demo, translations, public-asset integrity, and Pages path checks
+scripts/         Production resource verification
+.github/workflows/  Build, verify, and publish to GitHub Pages
 ```
 
 The Android application is credited as a collaborative University of Oslo project. The footer separately credits creation of this website to Dichino Nguyen.
 
-## Hosting and sharing
+## GitHub Pages
 
-The tracked `.openai/hosting.json` points to the Sites project and its static `dist` output. New Sites use private access by default. Make the site public before using its URL on LinkedIn. If deploying to another domain, update the canonical URL and absolute Open Graph image/page URLs in `index.html`.
+Production URL: **https://dichino.github.io/god-sikt-landing-page/**
 
-For a standard static host, deploy `dist` at the domain root. The site uses fragment navigation and requires no server-side routing.
+Vite uses `base: '/god-sikt-landing-page/'`. Public images, the sign-library fetch, and sign image paths use the shared `assetUrl` helper. Vite prefixes JavaScript, CSS, and bundled fonts automatically. Navigation uses section fragments, so no SPA rewrite or custom 404 page is needed. Canonical and sharing metadata point to the production URL.
+
+### One-time repository setup
+
+1. Open [Settings → Pages](https://github.com/dichino/god-sikt-landing-page/settings/pages).
+2. Under **Build and deployment → Source**, select **GitHub Actions**.
+3. Push the website changes, including `.github/workflows/deploy-pages.yml`, to `main`.
+4. Open [Actions](https://github.com/dichino/god-sikt-landing-page/actions) and wait for **Deploy God Sikt to GitHub Pages** to succeed. The workflow can also be started manually with **Run workflow**.
+
+Every push to `main` installs the locked dependencies, runs the tests, builds the website, checks the production URLs, and publishes **only `dist/`**. Deployment uses GitHub's built-in token and the `github-pages` environment; no personal access token or deployment secret is required. GitHub Pages must be enabled in repository settings before the deployment job can succeed.
+
+The Pages artifact excludes the report, internal documents, repository source, and hosting configuration. A validation step rejects unexpected file types or symbolic links in `dist/` before upload. Keep private documents outside `public/`, since Vite copies that directory into the production output.
+
+After deployment, check the live URL, navigation, **NO | EN**, remembered language after reload, the sign library, and the Figma/Android comparison on desktop and mobile. The same checks can be performed locally with `npm run preview` before publishing.
 
 The static HTML metadata is Norwegian for first visits and social crawlers. Switching languages updates the page title, description, Open Graph locale, sharing descriptions, and social image. `social-preview.png` is Norwegian; `social-preview-en.png` is English. A visitor’s preference is stored as `godsikt-language`. If browser storage is unavailable, language switching still works for the current visit.
 
 ## Verification
 
-The automated tests check geographic bounds, repeatable sample data, all 27 sign records and image paths, the two allowed project destinations, exclusion of report/internal files from public assets, translation completeness, language defaults, full-page rendering in both languages, and static Norwegian metadata. Browser checks cover the map/weather flow, sign/category/detail navigation, text sizing, About pages, the architecture diagram, engineering accordions, comparison controls, walkthrough, reset, mobile menu, language switching, and persistence after reload. These checks validate this website; they do not assert that the original Android test suite passes today.
+The automated tests check geographic bounds, repeatable sample data, all 27 sign records and image paths, the two allowed project destinations, exclusion of report/internal files from public assets, translation completeness, language defaults, full-page rendering in both languages, static Norwegian metadata, and resource/anchor URLs under the GitHub Pages repository path. `npm run verify:pages` additionally starts the production preview and checks every published resource over HTTP, including the generated JavaScript, CSS, fonts, all 27 sign images, and both social images. Browser checks cover the map/weather flow, sign/category/detail navigation, text sizing, About pages, the architecture diagram, engineering accordions, comparison controls, walkthrough, reset, mobile menu, language switching, and persistence after reload. These checks validate this website; they do not assert that the original Android test suite passes today.
